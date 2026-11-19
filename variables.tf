@@ -13,38 +13,6 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.confidential_ledger_lookup : (
-        length(v.name) <= 32
-      )
-    ])
-    error_message = "[from validate.ConfidentialLedgerName: invalid when len(value) > 32]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.confidential_ledger_lookup : (
-        !startswith(v.name, "-")
-      )
-    ])
-    error_message = "[from validate.ConfidentialLedgerName: must not start with \"-\"]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.confidential_ledger_lookup : (
-        !endswith(v.name, "-")
-      )
-    ])
-    error_message = "[from validate.ConfidentialLedgerName: must not end with \"-\"]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.confidential_ledger_lookup : (
-        length(v.name) != 0
-      )
-    ])
-    error_message = "[from validate.ConfidentialLedgerName: invalid when len(value) == 0]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.confidential_ledger_lookup : (
         length(v.resource_group_name) <= 90
       )
     ])
